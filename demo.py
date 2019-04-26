@@ -20,7 +20,6 @@ result = soup.findAll('input', {"name":"memberEmail"})
 
 print(result[0].get('value')) # print the member's email address
 
-
 # class Conversation:
 #     def __init__(self, question, answer):
 #         self.question = question
