@@ -276,39 +276,32 @@ with open(".\\resource\\command_data.csv", "r", encoding="utf-8") as csvfile:
     for row in spamreader:
         command_data.append(row)
 
-# print(command_data[:5])
-# command_counter={} # dict 생성, 아이디를 key값, 입력줄수를 value 값
-#
-# for data in command_data: #리스트 데이터를 딕트로 변경
-#     if data[1] in command_counter.keys(): #아이디가 이미 키값으로 변경되었을때
-#         command_counter[data[1]] += 1 # 기존 출현한 아이디
-#     else:
-#         command_counter[data[1]] = 1 # 처음 나온 아이디
-#
-# dictlist = [] # 딕트를 리스트로 변경
-# for key, value in command_counter.items():
-#     temp = [key, value]
-#     dictlist.append(temp)
-#
-# sorted_dict = sorted(dictlist, key=getKey, reverse=True) # 리스트를 입력 줄 수로 정렬
-# print(sorted_dict[:100]) # 리스트의 상위 10 개 값만 출력
-#
-# testList = [1, 2, 4, 5, 6,3,4,5,6]
-# print(sum(testList))
+print(command_data[:5])
+command_counter={} # dict 생성, 아이디를 key값, 입력줄수를 value 값
 
-def counter(filename):
-    f = open("./resource/"+filename, 'r', encoding="utf-8")
-    yesterday_lyric = ""
-    while 1:
-        line = f.readline()
-        if not line:
-            break
-        yesterday_lyric = yesterday_lyric + line.strip() + "\n"
-    f.close()
+for data in command_data: #리스트 데이터를 딕트로 변경
+    if data[1] in command_counter.keys(): #아이디가 이미 키값으로 변경되었을때
+        command_counter[data[1]] += 1 # 기존 출현한 아이디
+    else:
+        command_counter[data[1]] = 1 # 처음 나온 아이디
 
-    n_of_yesterday = yesterday_lyric.upper().count("YESTERDAY")
-    print("Number of a Word 'Yesterday'" , n_of_yesterday)
+dictlist = [] # 딕트를 리스트로 변경
+for key, value in command_counter.items():
+    temp = [key, value]
+    dictlist.append(temp)
 
-if __name__ == "__main__":
-    filename = "yesterday.txt"
-    counter(filename)
+sorted_dict = sorted(dictlist, key=getKey, reverse=True) # 리스트를 입력 줄 수로 정렬
+print(sorted_dict[:100]) # 리스트의 상위 10 개 값만 출력
+
+testList = [1, 2, 4, 5, 6,3,4,5,6]
+print(sum(testList))
+
+# import sys
+# def main(): # python testpython.py "test" "check" "python"
+#     for i in sys.argv[1:]:
+#         print(i)
+#
+# if __name__ == "__main__":
+#     main()
+
+
